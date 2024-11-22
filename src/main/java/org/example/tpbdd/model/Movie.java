@@ -21,7 +21,7 @@ public class Movie {
     private String genre;
     private int year;
     private String director;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_id")
     private List<Actor> actors;
 }
