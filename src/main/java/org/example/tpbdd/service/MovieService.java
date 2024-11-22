@@ -4,4 +4,6 @@ import org.example.tpbdd.dto.MovieRequest;
 
 public interface MovieService {
     void createMovie(MovieRequest movieRequest);
+
+    void deleteMovie(Long movieId) throws Exception;
 }

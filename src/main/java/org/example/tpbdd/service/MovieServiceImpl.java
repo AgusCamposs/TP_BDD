@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -37,5 +38,14 @@ public class MovieServiceImpl implements MovieService {
         movie.setActors(actors);
 
         movieRepository.save(movie);
+    }
+
+    public void deleteMovie(Long id) throws Exception {
+        Optional<Movie> movie = movieRepository.findById(id);
+        if(movie.isPresent()) {
+            movieRepository.delete(movie.get());
+            return;
+        }
+        throw new Exception("Movie not found");
     }
 }

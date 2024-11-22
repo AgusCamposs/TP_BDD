@@ -16,8 +16,8 @@ public class SecurityConfiguration {
         httpSecurity.authorizeHttpRequests(
                 request -> request
                         .requestMatchers("/movies/create").permitAll()
+                        .requestMatchers("/movies/delete/**").permitAll()
         )
-                .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable);
         return httpSecurity.build();
     }
