@@ -48,4 +48,12 @@ public class MovieServiceImpl implements MovieService {
         }
         throw new Exception("Movie not found");
     }
+
+    public List<Movie> getMovies() throws Exception {
+        List<Movie> movies = (List<Movie>) movieRepository.findAll();
+        if(movies.isEmpty()) {
+            throw new Exception("No Movies Found");
+        }
+        return movies;
+    }
 }
