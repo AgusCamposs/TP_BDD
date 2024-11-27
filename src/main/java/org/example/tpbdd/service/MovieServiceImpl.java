@@ -3,6 +3,7 @@ package org.example.tpbdd.service;
 import jakarta.validation.Valid;
 import org.example.tpbdd.dto.ActorRequest;
 import org.example.tpbdd.dto.MovieRequest;
+import org.example.tpbdd.dto.UpdateRatingRequest;
 import org.example.tpbdd.model.Actor;
 import org.example.tpbdd.model.Movie;
 import org.example.tpbdd.repository.MovieRepository;
@@ -26,6 +27,7 @@ public class MovieServiceImpl implements MovieService {
         movie.setYear(movieRequest.getYear());
         movie.setGenre(movieRequest.getGenre());
         movie.setDirector(movieRequest.getDirector());
+        movie.setRating(movieRequest.getRating());
 
         List<Actor> actors = new ArrayList<>();
         for(ActorRequest actorRequest : movieRequest.getActors()) {
@@ -40,8 +42,8 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movie);
     }
 
-    public void deleteMovie(Long id) throws Exception {
-        Optional<Movie> movie = movieRepository.findById(id);
+    public void deleteMovie(Long movieId) throws Exception {
+        Optional<Movie> movie = movieRepository.findById(movieId);
         if(movie.isPresent()) {
             movieRepository.delete(movie.get());
             return;
@@ -55,5 +57,15 @@ public class MovieServiceImpl implements MovieService {
             throw new Exception("No Movies Found");
         }
         return movies;
+    }
+
+    public void updateRating(Long movieId, UpdateRatingRequest updateRatingRequest) throws Exception {
+        Optional<Movie> movie = movieRepository.findById(movieId);
+        if(movie.isPresent()) {
+            movie.get().setRating(updateRatingRequest.getRating());
+            movieRepository.save(movie.get());
+            return;
+        }
+        throw new Exception("Movie not found");
     }
 }

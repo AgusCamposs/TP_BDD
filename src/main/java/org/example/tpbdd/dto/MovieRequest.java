@@ -1,6 +1,7 @@
 package org.example.tpbdd.dto;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +23,9 @@ public class MovieRequest {
     private int year;
     @NotBlank
     private String director;
+    @Min(0)
+    @Max(5)
+    private float rating;
     @NotNull
     private List<@Valid ActorRequest> actors;
 }

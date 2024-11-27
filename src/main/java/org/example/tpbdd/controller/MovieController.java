@@ -1,6 +1,7 @@
 package org.example.tpbdd.controller;
 
 import org.example.tpbdd.dto.MovieRequest;
+import org.example.tpbdd.dto.UpdateRatingRequest;
 import org.example.tpbdd.model.Movie;
 import org.example.tpbdd.service.MovieService;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,11 @@ public class MovieController {
     public ResponseEntity<List> getAllMovies() throws Exception {
         List<Movie> movies = movieService.getMovies();
         return new ResponseEntity<>(movies, HttpStatus.OK);
+    }
+    @PatchMapping("updateRating/{movieId}")
+    public ResponseEntity<Void> updateRating(@PathVariable Long movieId,
+                                             @RequestBody @Valid UpdateRatingRequest updateRatingRequest) throws Exception {
+        movieService.updateRating(movieId, updateRatingRequest);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
