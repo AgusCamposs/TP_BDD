@@ -21,7 +21,7 @@ public class MovieServiceImpl implements MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public void createMovie(@Valid MovieRequest movieRequest) {
+    public Movie createMovie(@Valid MovieRequest movieRequest) {
         Movie movie = new Movie();
         movie.setTitle(movieRequest.getTitle());
         movie.setYear(movieRequest.getYear());
@@ -39,7 +39,7 @@ public class MovieServiceImpl implements MovieService {
         }
         movie.setActors(actors);
 
-        movieRepository.save(movie);
+        return movieRepository.save(movie);
     }
 
     public void deleteMovie(Long movieId) throws Exception {
@@ -59,12 +59,11 @@ public class MovieServiceImpl implements MovieService {
         return movies;
     }
 
-    public void updateRating(Long movieId, UpdateRatingRequest updateRatingRequest) throws Exception {
+    public Movie updateRating(Long movieId, UpdateRatingRequest updateRatingRequest) throws Exception {
         Optional<Movie> movie = movieRepository.findById(movieId);
         if(movie.isPresent()) {
             movie.get().setRating(updateRatingRequest.getRating());
-            movieRepository.save(movie.get());
-            return;
+            return movieRepository.save(movie.get());
         }
         throw new Exception("Movie not found");
     }

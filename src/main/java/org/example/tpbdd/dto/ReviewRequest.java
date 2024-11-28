@@ -1,6 +1,5 @@
 package org.example.tpbdd.dto;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -9,24 +8,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class MovieRequest {
+public class ReviewRequest {
     @NotBlank
-    private String title;
+    private String movie;
     @NotBlank
-    private String genre;
-    @Min(1900)
-    private int year;
+    private String reviewerName;
     @NotBlank
-    private String director;
+    private String review;
     @NotNull
     @Min(0)
     @Max(5)
     private Float rating;
-    @NotNull
-    private List<@Valid ActorRequest> actors;
 }

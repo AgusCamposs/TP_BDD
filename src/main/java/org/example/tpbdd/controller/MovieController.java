@@ -21,9 +21,9 @@ public class MovieController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createMovie(@RequestBody @Valid MovieRequest movieRequest){
-        movieService.createMovie(movieRequest);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Movie> createMovie(@RequestBody @Valid MovieRequest movieRequest){
+        Movie movie = movieService.createMovie(movieRequest);
+        return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
     @DeleteMapping("/delete/{movieId}")
     public ResponseEntity<Void> deleteMovie(@PathVariable Long movieId) throws Exception {
@@ -35,10 +35,10 @@ public class MovieController {
         List<Movie> movies = movieService.getMovies();
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
-    @PatchMapping("updateRating/{movieId}")
-    public ResponseEntity<Void> updateRating(@PathVariable Long movieId,
+    @PatchMapping("/updateRating/{movieId}")
+    public ResponseEntity<Movie> updateRating(@PathVariable Long movieId,
                                              @RequestBody @Valid UpdateRatingRequest updateRatingRequest) throws Exception {
-        movieService.updateRating(movieId, updateRatingRequest);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Movie movie = movieService.updateRating(movieId, updateRatingRequest);
+        return new ResponseEntity<>(movie, HttpStatus.OK);
     }
 }
