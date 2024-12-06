@@ -6,7 +6,7 @@ import { Review } from "../types/review"
 import {useDetails} from "../hooks/useDetails.ts";
 
 const ListMovie = () => {
-	const { deleteMovie} = useDetails()
+	const { deleteMovie, deleteReview } = useDetails()
 	const [movies, setMovies] = useState<Movie[]>([])
 	const [reviews, setReviews] = useState<Review[]>([])
 	const [isLoaded, setIsLoaded] = useState(false) // Estado para controlar si se cargaron las películas
@@ -75,11 +75,13 @@ const ListMovie = () => {
 				<ul>
 					{reviews.map(review => (
 						<li key={review.id}>
-							<strong>Pelicula: </strong>{review.movie} <strong>Nombre Reviewer: </strong> {review.reviewerName}
+							<strong>Pelicula: </strong>{review.movie} <strong>Nombre
+							Reviewer: </strong> {review.reviewerName}
 							<strong>Rating:</strong> {review.rating} <strong>Review: </strong> {review.review}
 							<Link to={`/reviews/${review.id}/edit`}>
 								<button>Edit</button>
 							</Link>
+							<button onClick={() => deleteReview(review.id)}>Delete Review</button>
 						</li>
 					))}
 				</ul>

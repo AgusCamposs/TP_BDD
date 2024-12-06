@@ -43,7 +43,10 @@ const DetailsMovie = () => {
 			{reviews.length > 0 ? (
 				<ul>
 					{reviews.map((review) => (
-						<li key={review.movieId}>
+						<li key={review.id}>
+							<p>
+								<strong>Movie: </strong> {review.movie}
+							</p>
 							<p>
 								<strong>Reviewer:</strong> {review.reviewerName}
 							</p>
@@ -55,12 +58,12 @@ const DetailsMovie = () => {
 							</p>
 
 							{/* Botón para editar la reseña */}
-							<Link to={`/reviews/${review.movieId}/edit`}>
+							<Link to={`/reviews/${review.id}/edit`}>
 								<button>Edit Review</button>
 							</Link>
 
 							{/* Botón para eliminar la reseña */}
-							<button onClick={() => deleteReview(review.movieId)}>Delete Review</button>
+							<button onClick={() => deleteReview(review.id)}>Delete Review</button>
 						</li>
 					))}
 				</ul>
