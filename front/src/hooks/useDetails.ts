@@ -16,15 +16,6 @@ export const useDetails = () => {
 			.get<Movie>(`http://localhost:8081/movies/${id}`)
 			.then((response) => setMovie(response.data))
 			.catch((error) => console.error("Error fetching movie details:", error))
-
-		// Fetch de las reseñas asociadas a la película
-		axios
-			.get<Review[]>(`http://localhost:8081/reviews/all`)
-			.then((response) => {
-				const movieReviews = response.data.filter((review) => review.movieId === id)
-				setReviews(movieReviews)
-			})
-			.catch((error) => console.error("Error fetching reviews:", error))
 	}, [id])
 
 	const deleteMovie = () => {
@@ -45,7 +36,7 @@ export const useDetails = () => {
 				.delete(`http://localhost:8081/reviews/delete/${reviewId}`)
 				.then(() => {
 					alert("Review deleted successfully!")
-					setReviews(reviews.filter((review) => review.movieId !== reviewId)) // Actualiza la lista local
+					setReviews(reviews.filter((review) => review.id !== reviewId)) // Actualiza la lista local
 				})
 				.catch((error) => console.error("Error deleting review:", error))
 		}

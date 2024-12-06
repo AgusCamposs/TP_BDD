@@ -13,11 +13,11 @@ const Review = ({ url }: ReviewProps) => {
 			<h1>{url ? "Edit Review" : "Add Review"}</h1>
 			<form onSubmit={handleSubmit}>
 				<div className={styles.inputContainer}>
-					<label>Movie ID:</label>
+					<label>Movie:</label>
 					<input
 						type="text"
-						name="movieId"
-						value={reviewData.movieId}
+						name="movie"
+						value={reviewData.movie}
 						onChange={handleChange}
 						required
 						disabled={!!url}
@@ -72,12 +72,12 @@ const Review = ({ url }: ReviewProps) => {
 						className={styles.button}
 						type="submit"
 						disabled={
-							!reviewData.movieId ||
+							!reviewData.movie ||
 							!reviewData.rating ||
 							!reviewData.review ||
 							!reviewData.reviewerName
-						}>
-						{url ? "Update Review" : "Add Review"}
+						}
+						>{url ? "Update Review" : "Add Review"}
 					</button>
 				</div>
 			</form>

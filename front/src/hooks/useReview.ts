@@ -6,7 +6,8 @@ import { Review } from "../types/review"
 export const useReview = (url: string | undefined) => {
 	const navigate = useNavigate()
 	const [reviewData, setReviewData] = useState<Review>({
-		movieId: "",
+		id:"",
+		movie: "",
 		reviewerName: "",
 		review: "",
 		rating: 0,
@@ -41,17 +42,17 @@ export const useReview = (url: string | undefined) => {
 		axios[method](fetchUrl, reviewData)
 			.then(() => {
 				alert(url ? "Review updated successfully!" : "Review added successfully!")
-				navigate({ to: "/movies/$id/details", params: { id: reviewData.movieId } })
+				navigate({ to: "/movies/$id/details", params: { id: reviewData.id } })
 			})
 			.catch((error) => console.error("Error saving review:", error))
 	}
 
 	const handleDelete = () => {
 		axios
-			.delete(`http://localhost:8081/reviews/delete/${reviewData.movieId}`)
+			.delete(`http://localhost:8081/reviews/delete/${reviewData.id}`)
 			.then(() => {
 				alert("Review deleted successfully!")
-				navigate({ to: "/movies/$id/details", params: { id: reviewData.movieId } }) // Redirige a los detalles de la película
+				navigate({ to: "/movies/$id/details", params: { id: reviewData.id } }) // Redirige a los detalles de la película
 			})
 			.catch((error) => console.error("Error deleting review:", error))
 	}

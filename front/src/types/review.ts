@@ -1,5 +1,6 @@
 export interface Review {
-	movieId: string
+	id: string
+	movie: string
 	reviewerName: string
 	review: string
 	rating: number

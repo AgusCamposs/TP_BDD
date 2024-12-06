@@ -14,6 +14,7 @@ const isDisabled = (movie: Movie) =>
 
 export const useMovie = () => {
 	const [movie, setMovie] = useState<Movie>({
+		id: "",
 		title: "",
 		genre: "",
 		year: "",
@@ -42,7 +43,7 @@ export const useMovie = () => {
 	const addActor = () => {
 		setMovie((prev) => ({
 			...prev,
-			actors: [...prev.actors, { name: "", lastname: "", age: "" }],
+			actors: [...prev.actors, {name: "", lastname: "", age: "" }],
 		}))
 	}
 

@@ -35,7 +35,7 @@ const EditMove = () => {
 			<h1>Edit Movie Rating</h1>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<label>Rating:</label>
+					<label>Rating (0-5):</label>
 					<input
 						type="number"
 						name="rating"
@@ -43,6 +43,7 @@ const EditMove = () => {
 						onChange={handleChange}
 						min="0"
 						max="5"
+						step="0.1"
 						required
 					/>
 				</div>

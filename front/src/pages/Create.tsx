@@ -64,6 +64,7 @@ const CreateMovie = () => {
 						className={styles.input}
 						min="0"
 						max="5"
+						step="0.1"
 						required
 					/>
 				</div>
