@@ -20,7 +20,6 @@ const Review = ({ url }: ReviewProps) => {
 						value={reviewData.movie}
 						onChange={handleChange}
 						required
-						disabled={!!url}
 						className={styles.input}
 					/>
 				</div>
