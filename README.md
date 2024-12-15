@@ -23,7 +23,7 @@
 -Crear una base de datos local con MongoDB.
 
 ## 3. Configuración del Backend
-### 1. En el directorio del projecto, crear un archivo .env del projecto con la siguiente estructura:
+### 1. En el directorio del proyecto, crear un archivo .env del projecto con la siguiente estructura:
 
 ```dotenv
 POSTGRES_USERNAME={username}
