@@ -25,13 +25,13 @@
 ## 3. Configuración del Backend
 ### 1. En el directorio del projecto, crear un archivo .env del projecto con la siguiente estructura:
 
-    ```dotenv
-    POSTGRES_USERNAME={username}
-    POSTGRES_PASSWORD={password}
-    POSTGRES_LOCAL_URL=jdbc:postgresql://localhost:{port}/{database}
-    POSTGRES_DB={database}
-    MONGODB_URL=mongodb://localhost:{port}/{database}
-    ```
+```dotenv
+POSTGRES_USERNAME={username}
+POSTGRES_PASSWORD={password}
+POSTGRES_LOCAL_URL=jdbc:postgresql://localhost:{port}/{database}
+POSTGRES_DB={database}
+MONGODB_URL=mongodb://localhost:{port}/{database}
+```
 Con las credenciales utilizadas cuando se configuraron las bases de datos
    Valores por defecto -> username=postgres, port:5432
 
