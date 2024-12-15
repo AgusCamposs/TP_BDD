@@ -22,6 +22,8 @@
 
 -Crear una base de datos local con MongoDB.
 
+Asegurarse de que las bases de datos PostgreSQL y MongoDB están corriendo antes de ejecutar la aplicación.
+
 ## 3. Configuración del Backend
 ### 1. En el directorio del proyecto, crear un archivo .env del projecto con la siguiente estructura:
 
