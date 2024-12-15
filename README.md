@@ -33,7 +33,7 @@ POSTGRES_DB={database}
 MONGODB_URL=mongodb://localhost:{port}/{database}
 ```
 Con las credenciales utilizadas cuando se configuraron las bases de datos
-   Valores por defecto -> username=postgres, port:5432
+
 
 ### 2. Ejecutar el siguiente comando para compilar el proyecto y descargar las dependencias necesarias: 
 ```mvn clean install```
